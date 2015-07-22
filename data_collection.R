@@ -13,11 +13,15 @@ responseList <- fromJSON(response)
 results <- responseList$results
 
 #convert results from list to dataframe
-data <- do.call(rbind,lapply(results, function(input){
-  
+trafficData <- do.call(rbind, lapply(results, function(input){
   #Convert a traffic object to a row
-  row <- c(input$id,input$sectionName,input$trafficRate,input$recordedDate)
+  row <- as.data.frame(input)
   return(row)
-}) )
+}))
+
+#update the column names
+names(trafficData) <- c("ID", "Section Name", "Traffic Rate", "Timestamp")
+
+
 
 
