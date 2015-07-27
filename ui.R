@@ -26,10 +26,10 @@ shinyUI(fluidPage(
                    value = 100, 
                    min = 100, 
                    max = 1000, 
-                   step = 50),
-      actionButton("filter", 
-                   label = "Search")
+                   step = 50)
     ),
-    mainPanel()
+    mainPanel(
+      tableOutput("trafficData")
+    )
   )
 ))
