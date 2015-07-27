@@ -1,7 +1,7 @@
 library(rjson)
 
 #REST endpoint for nairobi's traffic
-url <-"http://nairobitraffic-server.elasticbeanstalk.com/api/trafficRecord/"
+url <-"http://nairobitraffic-server.elasticbeanstalk.com/api/trafficRecord/?section=nhif-ngong-east"
 
 #JSON response from rest endpoint
 response <- scan(url, "", sep="\n")
@@ -21,7 +21,4 @@ trafficData <- do.call(rbind, lapply(results, function(input){
 
 #update the column names
 names(trafficData) <- c("ID", "Section Name", "Traffic Rate", "Timestamp")
-
-
-
 
